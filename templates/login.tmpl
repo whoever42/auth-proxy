@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="en">
+    <head>
+        <link rel="icon" href="data:,">
+        <title>Restricted access</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <link rel="stylesheet" media="screen" href="/assets/login.css" />
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="{{.GoogleClientID}}.apps.googleusercontent.com">
+        <script>
+            var skip = false;
+            {{if .LoggedIn}}
+                skip = true;
+            {{- end}}
+
+            function onSignIn(googleUser) {
+                if (skip) {
+                    skip = false;
+                    return;
+                }
+                var id_token = googleUser.getAuthResponse().id_token;
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'https://{{.ProxyHost}}:{{.ServerPort}}/login');
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onload = function() {
+                    if (this.responseText === "LoginOK") {
+                        window.location = "/";
+                    } 
+                };
+                xhr.send('idtoken=' + id_token);
+            }
+            function signOut() {
+                var auth2 = gapi.auth2.getAuthInstance();
+                auth2.signOut().then(function () {
+                window.location = "/logout";
+                });
+            }
+        </script>
+    </head>
+    <body class="application controller-admin-sessions" style="font-family:system-ui">
+        <div class="container">
+            <div class="box">
+                <div class="logo"></div>
+                <div class="field">
+                    {{if .LoggedIn}}
+                    Logged in as {{.LoggedInEmail}} <a href="javascript:signOut()">Logout</a><br /><br />
+                    {{- end}}
+                </div>
+                <!-- <form class="login" id="loginApple" action="/loginApple" accept-charset="UTF-8" method="post"> -->
+                <div class="field">
+                <a href="https://appleid.apple.com/auth/authorize?response_type=code&response_mode=form_post&client_id={{.AppleClientID}}&redirect_uri=https://{{.ProxyHost}}:{{.ServerPort}}/login&state={{.AppleCode}}&scope=name+email"><img src="/assets/apple-id.png" height="40px" /></a>
+                </div><br />
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                <!-- </form> -->
+            </div>
+        </div>
+    </body>
+</html>

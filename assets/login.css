@@ -1,0 +1,79 @@
+.controller-admin-sessions {
+    background: #f0f0f0;
+    color: #212121
+}
+
+.controller-admin-sessions .button, .controller-admin-sessions .button.secondary {
+    background-color: inherit;
+    color: #8055A3
+}
+
+.controller-admin-sessions .button:hover, .controller-admin-sessions .button:focus,
+.controller-admin-sessions .button:active, .controller-admin-sessions .button.secondary:hover,
+.controller-admin-sessions .button.secondary:focus, .controller-admin-sessions .button.secondary:active {
+    background-color: inherit;
+    color: #212121
+}
+
+.controller-admin-sessions .button.danger:not(:hover):not(:focus):not(:active),
+.controller-admin-sessions .button.secondary.danger:not(:hover):not(:focus):not(:active) {
+    background-color: #f0f0f0;
+    color: #ee462a
+}
+
+.controller-admin-sessions .button.danger:hover, .controller-admin-sessions .button.danger:focus,
+.controller-admin-sessions .button.danger:active, .controller-admin-sessions .button.secondary.danger:hover,
+.controller-admin-sessions .button.secondary.danger:focus, .controller-admin-sessions .button.secondary.danger:active {
+    background-color: #ee462a
+}
+
+.controller-admin-sessions .container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%
+}
+
+.controller-admin-sessions .container > .box {
+    width: 312px;
+    margin: 0 auto;
+    position: relative;
+    top: 15%
+}
+
+.controller-admin-sessions .container > .box .logo {
+    height: 132px;
+    width: 100%;
+    /* background-image: url(/assets/logo.png); */
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.controller-admin-sessions .field {
+    margin-left: 12px;
+    width: 288px
+}
+
+.controller-admin-sessions .field label {
+    display: block
+}
+
+.controller-admin-sessions .field .button {
+    width: 100%
+}
+
+.controller-admin-sessions .field input {
+    font-weight: normal;
+    border: none
+}
+
+.controller-admin-sessions .field .button {
+    margin-top: 24px;
+    background-color: #8055A3;
+    color: #f0f0f0
+}
+
+.controller-admin-sessions .field .button:hover {
+    background-color: #56287B
+}

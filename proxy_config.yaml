@@ -1,0 +1,35 @@
+# Server Listen IP and Port
+serverip: 0.0.0.0
+serverport: 4321
+# Hostname to use for web links to proxied services
+proxyhost: demo.my-main-domain-hosting-proxy.com
+# Proxy to be accessed from the Internet via HTTPS
+ssl: true
+# Proxy itself is behind proxy, trust X-Forwarded-IP header
+proxyip: false
+# Google Client ID
+googleclientid: 1234567890123-q1w2e3r4t5y6u7i8o9p0a1s2d3
+# Apple Client ID
+appleclientid: com.my-main-domain-hosting-proxy.demo
+# Apple Team ID
+appleteamid: A1B2A1B2A1
+# Apple Key ID
+applekeyid: A1B2A2B2A1
+# Cookie encryption keys, two 32 byte secure random arrays
+cookiekey: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 255]
+cookieenckey: [255, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
+# Allow access to proxied services from these IPs without auth. Not great, but not ... well ... actually it is quite terrible ...
+allowedips:
+  - 127.0.0.1
+allowedusers:
+  - sample.email.that.probably.does.not.exist@gmail.com
+services:
+  - 
+    description: Performance monitoring (Influx)
+    url: http://127.0.0.1:9999/
+  - 
+    description: System logs and performance data (Grafana)
+    url: http://127.0.0.1:3000/
+  - 
+    description: API execution tracing (Jaeger)
+    url: http://127.0.0.1:16686/
